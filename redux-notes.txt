@@ -13,3 +13,33 @@ Three Core Concepts
 A `store` that holds the state of our application
 An `action` that describes what happened in the application.
 A `reducer` which handles the action and decides how to update the state.
+
+Three Principles of Redux
+
+1. First Principle - The global state of our application is stored as an object inside a single store.
+    - Maintain our application state in a single object which would be managed by the Redux store.
+    - Lets assume we are tracking the number of cakes on the shelf
+    {
+        numberOfCakes : 10
+    }
+2. Second Principle - The only way to change the state is to to dispatch an action, an object that describes what happened.
+    - To update the state of our application, we nned to let Redux know about that with an action..
+    - Not allowed to directly update the state object.
+    - We are not allowed to directly take the cake from the shelf
+    - we need to scan the QR code and place the order - CAKE_ORDERED
+    {
+        type : 'CAKE_ORDERED'
+    }
+3. Third Principle - To specify how the state tree is updated based on the actions, you write pure reducers
+    - Reducer - (previousState,Action) => newState
+    - pure reducers are nothing but pure functions which take previous state and actions as inputs and return the next state.
+    - Being a pure function, instead of updating the previous state should return new state.
+    - Reducer is the ShopKeeper, when we order a cake he will take off the shelf, reduce his cake count by 1, print the Reciept and hand you the cake.
+    const Reducer = (state = initialState, action) =>{
+        switch(action.type){
+            case CAKE_ORDERED :
+            return{
+                numberOfCakes : state.numberOfCakes - 1
+            }
+        }
+    }
