@@ -1,3 +1,6 @@
+const redux = require('redux')
+const createStore = redux.createStore
+
 const CAKE_ORDERED = 'CAKE_ORDERED'
 
 // an action is an object with a type property
@@ -29,3 +32,5 @@ const reducer = (previousState = initialState, action) =>{
     }
 
 }
+// Holds application state
+const store = createStore(reducer)
