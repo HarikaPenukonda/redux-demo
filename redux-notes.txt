@@ -1,0 +1,15 @@
+cake shop
+    Entities                                    Activities
+    1. Shop - stores cakes on shelf             Customer - order a cake
+    2. ShopKeeper - Behind the counter          ShopKeeper - Box a cake from the shelf, Reciept to keep track
+    3. Customer - At the shop entrance
+
+
+Three Core Concepts
+1. Shop         ->  Store    ->  Holds the state of our application
+2. Cake Ordered ->  Action   ->  Describes what happened
+3. ShopKeeper   ->  Reducer  ->  Ties the store and actions together
+
+A `store` that holds the state of our application
+An `action` that describes what happened in the application.
+A `reducer` which handles the action and decides how to update the state.
