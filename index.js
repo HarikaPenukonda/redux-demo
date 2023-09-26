@@ -36,3 +36,5 @@ const reducer = (previousState = initialState, action) =>{
 const store = createStore(reducer)
 // Allows access to state via getState()
 console.log("Initial State", store.getState())
+// Register listeners via subscribe(listeners)
+store.subscribe(()=>console.log("Updated state",store.getState()))
