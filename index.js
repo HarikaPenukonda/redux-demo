@@ -20,12 +20,12 @@ const initialState = {
     anotherProperty : 0
 }
 //(previousState,action) => newState
-const reducer = (previousState = initialState, action) =>{
+const reducer = (state = initialState, action) =>{
     switch(action.type){
         case CAKE_ORDERED :
             return{
                 ...state,
-                numberOfCakes : state.numberOfCakes - 1
+                numberOfCakes : state.numberOfCakes - 1,
             }
         default :
             return state
@@ -37,8 +37,10 @@ const store = createStore(reducer)
 // Allows access to state via getState()
 console.log("Initial State", store.getState())
 // Register listeners via subscribe(listeners)
-store.subscribe(()=>console.log("Updated state",store.getState()))
+const unsubscribe = store.subscribe(()=>console.log("Updated state",store.getState()))
 // Allows state to be updated via dispatch(action)
 store.dispatch(orderCake())
 store.dispatch(orderCake())
 store.dispatch(orderCake())
+// Handles unregistering of listeners via a function returned by subscribe(listener)
+unsubscribe()
